@@ -1,4 +1,4 @@
-package com.noon.listview.xbmcremotecontrol;
+package com.noon.xbmcremotecontrol.data;
 
 /**
  * @author Adam Noon

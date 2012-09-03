@@ -30,7 +30,7 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import com.noon.listview.R;
-import com.noon.listview.xbmcremotecontrol.Movie;
+import com.noon.xbmcremotecontrol.data.Movie;
 
 public class MainActivity extends Activity {
 
