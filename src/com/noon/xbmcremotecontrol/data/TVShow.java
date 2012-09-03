@@ -4,15 +4,15 @@ package com.noon.xbmcremotecontrol.data;
  * @author Adam Noon
  *
  */
-public class Movie extends MediaAbstract {
+public class TVShow extends MediaAbstract {
 	
 	/**
-	 * Construct a Movie
+	 * Construct a TV Show
 	 * 
 	 * @param id ID within XBMC
 	 * @param title Title of the Movie
 	 */
-	public Movie(int id, String title) {
+	public TVShow(int id, String title) {
 		super(id, title);
 	}
 	

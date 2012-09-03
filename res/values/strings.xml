@@ -8,5 +8,6 @@
     <string name="title_activity_movies">Movies</string>
     <string name="movies">Movies</string>
     <string name="title_activity_tvshows">TV Shows</string>
+    <string name="tvshows">TV Shows</string>
 
 </resources>

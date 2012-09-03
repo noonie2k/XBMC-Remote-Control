@@ -105,7 +105,8 @@ public class MoviesActivity extends Activity {
 
 			Movie[] movieArray = new Movie[movies.length()];
 			for(int i=0; i < movies.length(); i++) {
-				movieArray[i] = new Movie(movies.getJSONObject(i).getString("label"));
+				JSONObject movie = movies.getJSONObject(i);
+				movieArray[i] = new Movie(movie.getInt("movieid"), movie.getString("label"));
 			}
 
 			ListView listView = (ListView) findViewById(R.id.listViewMovies);
@@ -117,7 +118,7 @@ public class MoviesActivity extends Activity {
 				@SuppressWarnings("unchecked")
 				public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 					Movie movie = (Movie) ((ArrayAdapter<Movie>)parent.getAdapter()).getItem(position);
-					Toast.makeText(getApplicationContext(), movie.getTitle(), Toast.LENGTH_SHORT).show();
+					Toast.makeText(getApplicationContext(), movie.toString(), Toast.LENGTH_SHORT).show();
 				}
 			});
 

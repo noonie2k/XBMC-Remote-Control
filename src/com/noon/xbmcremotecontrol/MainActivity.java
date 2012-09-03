@@ -24,4 +24,9 @@ public class MainActivity extends Activity {
 		Intent intent = new Intent(this, MoviesActivity.class);
 		startActivity(intent);
 	}
+	
+	public void showTVShowsActivity(View view) {
+		Intent intent = new Intent(this, TVShowsActivity.class);
+		startActivity(intent);
+	}
 }
