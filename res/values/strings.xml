@@ -10,5 +10,7 @@
     <string name="title_activity_tvshows">TV Shows</string>
     <string name="tvshows">TV Shows</string>
     <string name="title_activity_media_info">Media Info</string>
+    <string name="description_media_image">Image for selected Media</string>
+    <string name="description_media_title">Media Title</string>
 
 </resources>

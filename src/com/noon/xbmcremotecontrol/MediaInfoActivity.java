@@ -9,6 +9,7 @@ import android.widget.TextView;
 public class MediaInfoActivity extends Activity {
 
 	public final static String MEDIA_TITLE = "com.noon.xbmcremotecontrol.MEDIA_TITLE";
+	public final static String MEDIA_IMAGE = "com.noon.xbmcremotecontrol.MEDIA_IMAGE";
 	
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -17,9 +18,9 @@ public class MediaInfoActivity extends Activity {
         
         Intent intent = getIntent();
         String title = intent.getStringExtra(MediaInfoActivity.MEDIA_TITLE);
-        this.findViewById(R.id.lblTitle);
+        this.findViewById(R.id.mediaTitle);
         
-        TextView textViewTitle = (TextView) findViewById(R.id.lblTitle);
+        TextView textViewTitle = (TextView) findViewById(R.id.mediaTitle);
         textViewTitle.setText(title);
     }
 

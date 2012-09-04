@@ -16,7 +16,7 @@ import org.json.JSONObject;
 
 public class APIBase {
 	
-	protected JSONObject execute(String method) {
+	protected JSONObject execute(String method, JSONObject params) {
 		HttpClient client = new DefaultHttpClient();
 
 		try {
@@ -31,6 +31,7 @@ public class APIBase {
 				payload.putOpt("id", "1");
 				payload.putOpt("jsonrpc", "2.0");
 				payload.putOpt("method", method);
+				payload.putOpt("params", params);
 			} catch (JSONException e) {
 				e.printStackTrace();
 			}

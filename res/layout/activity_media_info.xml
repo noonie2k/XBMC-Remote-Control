@@ -4,14 +4,23 @@
     android:layout_height="match_parent" >
 
     <TextView
-        android:id="@+id/lblTitle"
+        android:id="@+id/mediaTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentTop="true"
         android:gravity="center"
-        android:text="Media Title"
+        android:text="@string/description_media_title"
         android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <ImageView
+        android:id="@+id/mediaImage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/mediaTitle"
+        android:layout_centerHorizontal="true"
+        android:contentDescription="@string/description_media_image"
+        android:src="@drawable/ic_action_search" />
 
 </RelativeLayout>

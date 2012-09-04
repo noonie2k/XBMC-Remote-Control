@@ -1,5 +1,8 @@
 package com.noon.xbmcremotecontrol;
 
+import java.io.InputStream;
+import java.net.URL;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -7,6 +10,8 @@ import org.json.JSONObject;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.res.Configuration;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -71,15 +76,23 @@ public class MoviesActivity extends Activity {
 				public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 					Movie movie = (Movie) ((ArrayAdapter<Movie>)parent.getAdapter()).getItem(position);
 					
-					Intent intent = new Intent(getApplicationContext(), MediaInfoActivity.class);
-					intent.putExtra(MediaInfoActivity.MEDIA_TITLE, movie.toString());
-					startActivity(intent);
+					if (movie.getImage() == null) {
+						new GetMovieDetailsTask(movie).execute();
+					} else {
+						showMovieDetails(movie);
+					}
 				}
 			});
 
 		} catch (JSONException e) {
 			e.printStackTrace();
 		}
+	}
+	
+	public void showMovieDetails(Movie movie) {
+		Intent intent = new Intent(getApplicationContext(), MediaInfoActivity.class);
+		intent.putExtra(MediaInfoActivity.MEDIA_TITLE, movie.toString());
+		startActivity(intent);
 	}
 
 	private class GetMoviesTask extends AsyncTask<Void, Void, JSONObject> {
@@ -93,5 +106,39 @@ public class MoviesActivity extends Activity {
 		protected void onPostExecute(JSONObject result) {
 			updateMovieList(result);
 		}
+	}
+	
+	private class GetMovieDetailsTask extends AsyncTask<Void, Void, JSONObject> {
+		
+		private Movie movie;
+		
+		public GetMovieDetailsTask(Movie movie) {
+			this.movie = movie;
+		}
+		
+		@Override
+		protected JSONObject doInBackground(Void... params) {
+			return (new VideoLibrary().getMovieDetails(movie.getId()));
+		}
+
+		@Override
+		protected void onPostExecute(JSONObject result) {
+			String thumbUrl;
+			Bitmap image = null;
+			try {
+				thumbUrl = result.getJSONObject("result").getJSONObject("moviedetails").getString("thumbnail");
+				InputStream in = new URL(thumbUrl).openStream();
+				image = BitmapFactory.decodeStream(in);
+			} catch (JSONException e) {
+				e.printStackTrace();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			
+			this.movie.setImage(image);
+			
+			showMovieDetails(this.movie);
+		}
+		
 	}
 }
