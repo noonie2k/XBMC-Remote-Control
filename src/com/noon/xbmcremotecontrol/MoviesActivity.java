@@ -16,6 +16,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.content.res.Configuration;
 import android.graphics.Color;
 import android.os.AsyncTask;
@@ -118,7 +119,10 @@ public class MoviesActivity extends Activity {
 				@SuppressWarnings("unchecked")
 				public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 					Movie movie = (Movie) ((ArrayAdapter<Movie>)parent.getAdapter()).getItem(position);
-					Toast.makeText(getApplicationContext(), movie.toString(), Toast.LENGTH_SHORT).show();
+					
+					Intent intent = new Intent(getApplicationContext(), MediaInfoActivity.class);
+					intent.putExtra(MediaInfoActivity.MEDIA_TITLE, movie.toString());
+					startActivity(intent);
 				}
 			});
 

@@ -31,6 +31,10 @@
             android:name="TVShowsActivity"
             android:label="@string/title_activity_tvshows" >
         </activity>
+        <activity
+            android:name="MediaInfoActivity"
+            android:label="@string/title_activity_media_info" >
+        </activity>
     </application>
 
 </manifest>

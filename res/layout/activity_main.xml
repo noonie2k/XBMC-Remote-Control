@@ -3,15 +3,14 @@
     android:id="@+id/LinearLayout1"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical" >
-
+    android:orientation="vertical" >
     <Button
         android:id="@+id/btnShowMovies"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:onClick="showMoviesActivity"
         android:text="@string/movies" />
-
+
     <Button
         android:id="@+id/btnShowTVShows"
         android:layout_width="match_parent"
